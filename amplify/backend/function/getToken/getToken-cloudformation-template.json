@@ -27,6 +27,10 @@
     "storageawsJSDBStreamArn": {
       "Type": "String",
       "Default": "storageawsJSDBStreamArn"
+    },
+    "functionawsjsutilsArn": {
+      "Type": "String",
+      "Default": "functionawsjsutilsArn"
     }
   },
   "Conditions": {
@@ -100,7 +104,11 @@
           ]
         },
         "Runtime": "nodejs14.x",
-        "Layers": [],
+        "Layers": [
+          {
+            "Ref": "functionawsjsutilsArn"
+          }
+        ],
         "Timeout": 25
       }
     },
