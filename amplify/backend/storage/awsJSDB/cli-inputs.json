@@ -1,0 +1,14 @@
+{
+  "resourceName": "awsJSDB",
+  "tableName": "awsJSDB",
+  "partitionKey": {
+    "fieldName": "id1",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "lastname",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

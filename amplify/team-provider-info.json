@@ -10,6 +10,11 @@
       "StackName": "amplify-awsjs-dev-91912",
       "StackId": "arn:aws:cloudformation:eu-central-1:314161511803:stack/amplify-awsjs-dev-91912/e7ba5fc0-c240-11ed-9bdd-0abe42795834",
       "AmplifyAppId": "dssxj0awtw959"
+    },
+    "categories": {
+      "storage": {
+        "awsJSDB": {}
+      }
     }
   }
 }
