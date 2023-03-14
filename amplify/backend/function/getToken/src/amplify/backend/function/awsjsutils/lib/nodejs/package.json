@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.290.0",
+    "aws-serverless-express": "^3.3.5"
+  },
+  "devDependencies": {}
+}

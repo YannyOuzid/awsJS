@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "storage": {
+      "awsJSDB": [
+        "create",
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

@@ -18,11 +18,7 @@
       "function": {
         "getToken": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/getToken-7172416b2f7761323271-build.zip"
-        },
-        "awsjsutils": {
-          "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/awsjsutils-LambdaLayerVersionb3f3b3ff-build.zip"
+          "s3Key": "amplify-builds/getToken-595a487759324872524d-build.zip"
         }
       },
       "api": {

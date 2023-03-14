@@ -1,0 +1,126 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-awsjs-dev-91912-authRole",
+      "UnauthRoleArn": "arn:aws:iam::314161511803:role/amplify-awsjs-dev-91912-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::314161511803:role/amplify-awsjs-dev-91912-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-awsjs-dev-91912-deployment",
+      "UnauthRoleName": "amplify-awsjs-dev-91912-unauthRole",
+      "StackName": "amplify-awsjs-dev-91912",
+      "StackId": "arn:aws:cloudformation:eu-central-1:314161511803:stack/amplify-awsjs-dev-91912/e7ba5fc0-c240-11ed-9bdd-0abe42795834",
+      "AmplifyAppId": "dssxj0awtw959"
+    }
+  },
+  "function": {
+    "getToken": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "awsJSDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2023-03-14T10:28:06.196Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-03-14T10:28:11.395Z",
+      "distZipFilename": "getToken-7172416b2f7761323271-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
+        "s3Key": "amplify-builds/getToken-7172416b2f7761323271-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsjs-dev-91912-deployment/amplify-cfn-templates/function/getToken-cloudformation-template.json",
+        "logicalId": "functiongetToken"
+      },
+      "lastPushTimeStamp": "2023-03-14T10:29:18.727Z",
+      "output": {
+        "LambdaExecutionRoleArn": "arn:aws:iam::314161511803:role/awsjsLambdaRole7d4701bb-dev",
+        "Region": "eu-central-1",
+        "Arn": "arn:aws:lambda:eu-central-1:314161511803:function:getToken-dev",
+        "Name": "getToken-dev",
+        "LambdaExecutionRole": "awsjsLambdaRole7d4701bb-dev"
+      },
+      "lastPushDirHash": "dQNaMWY+yQM+eUPj9F9K4ohgUk8=",
+      "lastDevBuildTimeStamp": "2023-03-14T10:26:55.535Z"
+    },
+    "awsjsutils": {
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer",
+      "build": true,
+      "lastBuildTimeStamp": "2023-03-14T10:28:06.198Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2023-03-14T10:28:12.068Z",
+      "distZipFilename": "awsjsutils-LambdaLayerVersionb3f3b3ff-build.zip",
+      "latestPushedVersionHash": "e6e0e2f763812d3601083126502074d87d77c6b42343a5f70953ddd520ee6a73",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
+        "s3Key": "amplify-builds/awsjsutils-LambdaLayerVersionb3f3b3ff-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsjs-dev-91912-deployment/amplify-cfn-templates/function/awsjsutils-awscloudformation-template.json",
+        "logicalId": "functionawsjsutils"
+      },
+      "lastPushTimeStamp": "2023-03-14T10:29:18.727Z",
+      "output": {
+        "Arn": "arn:aws:lambda:eu-central-1:314161511803:layer:awsjsutils-dev:4"
+      }
+    }
+  },
+  "storage": {
+    "awsJSDB": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB",
+      "output": {
+        "PartitionKeyName": "id1",
+        "SortKeyName": "lastname",
+        "SortKeyType": "S",
+        "Region": "eu-central-1",
+        "Arn": "arn:aws:dynamodb:eu-central-1:314161511803:table/awsJSDB-dev",
+        "StreamArn": "arn:aws:dynamodb:eu-central-1:314161511803:table/awsJSDB-dev/stream/2023-03-14T08:56:27.009",
+        "PartitionKeyType": "S",
+        "Name": "awsJSDB-dev"
+      },
+      "lastPushTimeStamp": "2023-03-14T10:29:14.366Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsjs-dev-91912-deployment/amplify-cfn-templates/storage/awsJSDB-cloudformation-template.json",
+        "logicalId": "storageawsJSDB"
+      },
+      "lastPushDirHash": "jOa+8GULaiNZenph9Ge2gaL4dlY="
+    }
+  },
+  "api": {
+    "awsJSapi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "getToken",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-awsjs-dev-91912-deployment/amplify-cfn-templates/api/awsJSapi-cloudformation-template.json",
+        "logicalId": "apiawsJSapi"
+      },
+      "lastPushTimeStamp": "2023-03-14T10:29:14.368Z",
+      "output": {
+        "ApiName": "awsJSapi",
+        "RootUrl": "https://67ylkkwpx8.execute-api.eu-central-1.amazonaws.com/dev",
+        "ApiId": "67ylkkwpx8"
+      },
+      "lastPushDirHash": "VSaktskTNO5DgV2/2JrYBsKqbYw="
+    }
+  }
+}

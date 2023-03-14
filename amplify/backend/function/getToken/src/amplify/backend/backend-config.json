@@ -16,6 +16,11 @@
     }
   },
   "function": {
+    "awsjsutils": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer"
+    },
     "getToken": {
       "build": true,
       "dependsOn": [
