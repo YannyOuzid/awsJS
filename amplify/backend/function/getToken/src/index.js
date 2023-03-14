@@ -1,6 +1,6 @@
 const {DynamoDBClient} = require("@aws-sdk/client-dynamodb");
 const {DynamoDBDocumentClient, ScanCommand, PutCommand} = require("@aws-sdk/lib-dynamodb");
-const {getSecret} = require('utils')
+const {getSecret} = require('/opt/nodejs/utils')
 const {v4: uuidv4} = require("uuid")
 
 exports.handler = async (event, context) => {
