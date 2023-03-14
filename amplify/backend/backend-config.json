@@ -1,4 +1,20 @@
 {
+  "api": {
+    "awsJSapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getToken"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
   "function": {
     "getToken": {
       "build": true,
@@ -39,22 +55,6 @@
     "awsJSDB": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
-    }
-  },
-  "api": {
-    "awsJSapi": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "getToken",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
     }
   }
 }
