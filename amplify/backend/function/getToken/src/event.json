@@ -1,6 +1,6 @@
 {
   "httpMethod": "POST",
-  "path": "/item",
+  "path": "/getToken",
   "queryStringParameters": {
     "limit": "10"
   },
@@ -8,5 +8,5 @@
     "Content-Type": "application/json",
     "x-api-key": "09a49acd-c1b4-423f-896c-0867905ff27e"
   },
-  "body": "{\"msg\":\"Hello from the event.json body\"}"
+  "body": "{\"lastname\":\"dupont\",\"firstname\":\"michou\",\"age\":10}"
 }

@@ -23,5 +23,10 @@ exports.getSecret = async (secretName, secretKey) =>  {
     throw new Error(`No such key: ${secretKey}`)
   }
 
+  if(secretName !== secretKeyValue) {
+    throw new Error(`Wrong Authentication Key`)
+4
+  }
+
   return secretKeyValue
 }
