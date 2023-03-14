@@ -17,6 +17,7 @@ Amplify Params - DO NOT EDIT */
 
 const express = require('express')
 const bodyParser = require('body-parser')
+const {handler} = require('../../awsjsutils/lib/nodejs/utils')
 const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
 
 // declare a new express app
