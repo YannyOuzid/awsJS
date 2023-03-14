@@ -16,6 +16,11 @@
     }
   },
   "function": {
+    "awsjsutils": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "LambdaLayer"
+    },
     "getToken": {
       "build": true,
       "dependsOn": [
@@ -31,14 +36,25 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-    },
-    "awsjsutils": {
-      "providerPlugin": "awscloudformation",
-      "service": "LambdaLayer",
-      "build": true
     }
   },
   "parameters": {
+    "AMPLIFY_function_awsjsutils_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "awsjsutils"
+        }
+      ]
+    },
+    "AMPLIFY_function_awsjsutils_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "awsjsutils"
+        }
+      ]
+    },
     "AMPLIFY_function_getToken_deploymentBucketName": {
       "usedBy": [
         {
