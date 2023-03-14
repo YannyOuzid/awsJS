@@ -40,5 +40,21 @@
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     }
+  },
+  "api": {
+    "awsJSapi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "getToken",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    }
   }
 }
