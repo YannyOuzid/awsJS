@@ -1,6 +1,6 @@
 const awsServerlessExpress = require('aws-serverless-express');
 
-const {getSecret} = require('./utils')
+const {getSecret} = require('../../awsjsutils/lib/nodejs/utils')
 
 
 /**
