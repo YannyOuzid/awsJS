@@ -1,4 +1,13 @@
 export type AmplifyDependentResourcesAttributes = {
+  "function": {
+    "getToken": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    }
+  },
   "storage": {
     "awsJSDB": {
       "Arn": "string",

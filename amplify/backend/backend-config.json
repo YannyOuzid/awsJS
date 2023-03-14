@@ -1,4 +1,40 @@
 {
+  "function": {
+    "getToken": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "awsJSDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_getToken_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getToken"
+        }
+      ]
+    },
+    "AMPLIFY_function_getToken_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getToken"
+        }
+      ]
+    }
+  },
   "storage": {
     "awsJSDB": {
       "providerPlugin": "awscloudformation",
