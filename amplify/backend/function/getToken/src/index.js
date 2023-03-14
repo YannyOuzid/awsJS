@@ -1,6 +1,7 @@
-const {DynamoDBClient, GetItemCommand} = require("@aws-sdk/client-dynamodb");
-const {DynamoDBDocumentClient, QueryCommand, ScanCommand} = require("@aws-sdk/lib-dynamodb");
-const {getSecret} = require('../../awsjsutils/lib/nodejs/utils')
+const {DynamoDBClient} = require("@aws-sdk/client-dynamodb");
+const {DynamoDBDocumentClient, ScanCommand, PutCommand} = require("@aws-sdk/lib-dynamodb");
+const {getSecret} = require('utils')
+const {v4: uuidv4} = require("uuid")
 
 exports.handler = async (event, context) => {
   await getSecret('awsJsprofil', event.headers['x-api-key'])
@@ -31,10 +32,19 @@ exports.handler = async (event, context) => {
         body: JSON.stringify({error: "User already exists"})
       };
     } else {
+      await ddbDocClient.send(new PutCommand({
+        TableName: process.env.STORAGE_AWSJSDB_NAME,
+        Item: {
+          id1: uuidv4(),
+          lastname: body.lastname,
+          firstname: body.firstname,
+          age: body.age
+        }
+      }))
       response = {
         statusCode: 200,
-        body: "TODO create new user & token"
-      };
+        body: `User created ${body.lastname} ${body.firstname}`
+      }
     }
   } catch (e) {
     console.log(e);
