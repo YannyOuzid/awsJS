@@ -7,6 +7,9 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "function": {
+    "awsjsutils": {
+      "Arn": "string"
+    },
     "getToken": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
