@@ -6,13 +6,7 @@ const {v4: uuidv4} = require("uuid")
 exports.handler = async (event, context) => {
   await getSecret('awsJsprofil', event.headers['x-api-key'])
   console.log("EVENT: \n" + JSON.stringify(event, null, 2));
-  const client = new DynamoDBClient({
-    region: process.env.REGION,
-    credentials: {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-    },
-  });
+  const client = new DynamoDBClient();
   const ddbDocClient = DynamoDBDocumentClient.from(client);
 
   let response = {};
