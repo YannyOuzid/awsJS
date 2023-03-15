@@ -13,8 +13,7 @@
     },
     "categories": {
       "storage": {
-        "awsJSDB": {},
-        "dataStorage": {}
+        "awsJSDB": {}
       },
       "function": {
         "getToken": {
@@ -32,9 +31,6 @@
       },
       "api": {
         "awsJSapi": {}
-      },
-      "auth": {
-        "awsjsf81cbd6a": {}
       }
     }
   },
