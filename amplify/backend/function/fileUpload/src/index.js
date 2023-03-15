@@ -1,27 +1,27 @@
 const AWS = require("aws-sdk");
 const s3 = new AWS.S3()
+const {v4: uuidv4} = require("uuid")
 
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
  */
 exports.handler = async (event) => {
 
-    const upload = await s3.upload({
+    let fileName = uuidv4();
+
+    const item = {
         Bucket: 'awscoursjs',
-        Key: 'test.json',
+        Key: fileName + '.json',
         Body: JSON.stringify(event, null, 2),
-    }).promise()
+    }
+
+    const upload = await s3.upload(item).promise()
 
     console.log(upload)
     
     console.log(`EVENT: ${JSON.stringify(event)}`);
     return {
         statusCode: 200,
-    //  Uncomment below to enable CORS requests
-    //  headers: {
-    //      "Access-Control-Allow-Origin": "*",
-    //      "Access-Control-Allow-Headers": "*"
-    //  }, 
-        body: JSON.stringify('Hello from Lambda!'),
+        body: JSON.stringify(upload.Location),
     };
 };
