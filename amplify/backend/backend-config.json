@@ -58,6 +58,17 @@
     },
     "uploadDynamo": {
       "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "uploadDb"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
@@ -126,10 +137,30 @@
           "resourceName": "sendData"
         }
       ]
+    },
+    "AMPLIFY_function_uploadDynamo_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "uploadDynamo"
+        }
+      ]
+    },
+    "AMPLIFY_function_uploadDynamo_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "uploadDynamo"
+        }
+      ]
     }
   },
   "storage": {
     "awsJSDB": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "uploadDb": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     }

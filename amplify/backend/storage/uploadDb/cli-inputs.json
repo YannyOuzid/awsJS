@@ -1,0 +1,16 @@
+{
+  "resourceName": "uploadDb",
+  "tableName": "uploadDb",
+  "partitionKey": {
+    "fieldName": "uuid",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "user_uuid",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": [
+    "uploadDynamo"
+  ]
+}
