@@ -1,24 +1,41 @@
-const dynamodb = new AWS.DynamoDB.DocumentClient();
+/* Amplify Params - DO NOT EDIT
+	ENV
+	REGION
+	STORAGE_UPLOADDB_ARN
+	STORAGE_UPLOADDB_NAME
+	STORAGE_UPLOADDB_STREAMARN
+Amplify Params - DO NOT EDIT */const {DynamoDBClient} = require("@aws-sdk/client-dynamodb");
+const {DynamoDBDocumentClient, ScanCommand, PutCommand} = require("@aws-sdk/lib-dynamodb");
+// const {getSecret, createSecret} = require('/opt/nodejs/utils')
+const {v4: uuidv4} = require("uuid")
 
-const params = {
-    TableName: 'awscoursjs',
-    Item: {
-        id: Date.now(),
-        payload: JSON.stringify(event, null, 2)
+exports.handler = async (event) => {
+    console.log("EVENT: \n" + JSON.stringify(event, null, 2));
+    const client = new DynamoDBClient();
+    const ddbDocClient = DynamoDBDocumentClient.from(client);
+  
+    let response;
+    try {
+        const item = {
+          uuid: uuidv4(),
+          user_uuid: event.body.user_uuid,
+          file_content: JSON.stringify(event.body.file_content),
+        }
+        // Save user in DB
+        await ddbDocClient.send(new PutCommand({
+          TableName: process.env.STORAGE_UPLOADDB_NAME,
+          Item: item
+        }))
+    } catch (e) {
+      console.log(e);
+      response = {
+        statusCode: 500,
+        body: JSON.stringify({error: e.message})
+      };
     }
-};
-
-await dynamodb.put(params).promise();
-
-console.log(`EVENT: ${JSON.stringify(event)}`);
-
-return {
-    statusCode: 200,
-    // Uncomment below to enable CORS requests
-    // headers: {
-    //     "Access-Control-Allow-Origin": "*",
-    //     "Access-Control-Allow-Headers": "*"
-    // },
-    body: JSON.stringify('Hello from Lambda!')
-};
-
+  
+    ddbDocClient.destroy();
+    client.destroy();
+  
+    return response;
+  };
