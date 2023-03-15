@@ -22,11 +22,11 @@
         },
         "awsjsutils": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/awsjsutils-LambdaLayerVersionac037e0f-build.zip"
+          "s3Key": "amplify-builds/awsjsutils-LambdaLayerVersion8242538d-build.zip"
         },
         "sendData": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/sendData-70437237786959342b56-build.zip"
+          "s3Key": "amplify-builds/sendData-4b3561694b3744766a33-build.zip"
         }
       },
       "api": {

@@ -25,8 +25,13 @@ exports.getSecret = async (secretName, secretKey) =>  {
 
   if(secretName !== secretKeyValue) {
     throw new Error(`Wrong Authentication Key`)
-4
   }
 
   return secretKeyValue
 }
+
+exports.createSecret = (secretName, secretKey, secretValue) =>
+  secretManagerClient.createSecret({
+    Name: secretName,
+    SecretString: JSON.stringify({[secretKey]: secretValue})
+  }).promise()

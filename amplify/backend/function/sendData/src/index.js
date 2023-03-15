@@ -1,5 +1,10 @@
 const {getSecret} = require('/opt/nodejs/utils')
 
+/* Amplify Params - DO NOT EDIT
+	ENV
+	REGION
+Amplify Params - DO NOT EDIT */
+
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
  */
