@@ -35,7 +35,7 @@
         },
         "uploadDynamo": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/uploadDynamo-7475664e5a553643754b-build.zip"
+          "s3Key": "amplify-builds/uploadDynamo-536575587832496b494a-build.zip"
         }
       },
       "api": {

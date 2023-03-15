@@ -26,7 +26,7 @@
     },
     "storageuploadDbStreamArn": {
       "Type": "String",
-      "Default": "storageuploadDbArn"
+      "Default": "storageuploadDbStreamArn"
     }
   },
   "Conditions": {
@@ -81,6 +81,15 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "STORAGE_UPLOADDB_NAME": {
+              "Ref": "storageuploadDbName"
+            },
+            "STORAGE_UPLOADDB_ARN": {
+              "Ref": "storageuploadDbArn"
+            },
+            "STORAGE_UPLOADDB_STREAMARN": {
+              "Ref": "storageuploadDbStreamArn"
             }
           }
         },
@@ -228,6 +237,55 @@
           ]
         },
         "StartingPosition": "LATEST"
+      }
+    },
+    "AmplifyResourcesPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "amplify-lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageuploadDbArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageuploadDbArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
       }
     }
   },
