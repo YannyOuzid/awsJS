@@ -20,7 +20,7 @@
     }
   },
   "Resources": {
-    "LambdaLayerVersion8242538d": {
+    "LambdaLayerVersion6c15ae6d": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
         "CompatibleRuntimes": {
@@ -51,188 +51,13 @@
       "DeletionPolicy": "Delete",
       "UpdateReplacePolicy": "Retain"
     },
-    "LambdaLayerPermissionPublic8242538d": {
+    "LambdaLayerPermissionPublic6c15ae6d": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
         "LayerVersionArn": {
-          "Ref": "LambdaLayerVersion8242538d"
+          "Ref": "LambdaLayerVersion6c15ae6d"
         },
-        "Principal": "*"
-      }
-    },
-    "LambdaLayerVersion760d7e5c": {
-      "Type": "AWS::Lambda::LayerVersion",
-      "Properties": {
-        "CompatibleRuntimes": [
-          "nodejs14.x"
-        ],
-        "Content": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": "amplify-builds/awsjsutils-LambdaLayerVersion760d7e5c-build.zip"
-        },
-        "Description": "Updated layer version 2023-03-14T15:10:18.855Z",
-        "LayerName": {
-          "Fn::Sub": [
-            "awsjsutils-${env}",
-            {
-              "env": {
-                "Ref": "env"
-              }
-            }
-          ]
-        }
-      },
-      "DeletionPolicy": "Delete",
-      "UpdateReplacePolicy": "Retain"
-    },
-    "LambdaLayerPermissionPublic760d7e5c": {
-      "Type": "AWS::Lambda::LayerVersionPermission",
-      "Properties": {
-        "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:eu-central-1:314161511803:layer:awsjsutils-dev:9",
-        "Principal": "*"
-      }
-    },
-    "LambdaLayerVersionac037e0f": {
-      "Type": "AWS::Lambda::LayerVersion",
-      "Properties": {
-        "CompatibleRuntimes": [
-          "nodejs14.x"
-        ],
-        "Content": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": "amplify-builds/awsjsutils-LambdaLayerVersionac037e0f-build.zip"
-        },
-        "Description": "Updated layer version 2023-03-14T15:10:18.855Z",
-        "LayerName": {
-          "Fn::Sub": [
-            "awsjsutils-${env}",
-            {
-              "env": {
-                "Ref": "env"
-              }
-            }
-          ]
-        }
-      },
-      "DeletionPolicy": "Delete",
-      "UpdateReplacePolicy": "Retain"
-    },
-    "LambdaLayerPermissionPublicac037e0f": {
-      "Type": "AWS::Lambda::LayerVersionPermission",
-      "Properties": {
-        "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:eu-central-1:314161511803:layer:awsjsutils-dev:8",
-        "Principal": "*"
-      }
-    },
-    "LambdaLayerVersion1f7a07a1": {
-      "Type": "AWS::Lambda::LayerVersion",
-      "Properties": {
-        "CompatibleRuntimes": [
-          "nodejs14.x"
-        ],
-        "Content": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": "amplify-builds/awsjsutils-LambdaLayerVersion1f7a07a1-build.zip"
-        },
-        "Description": "Updated layer version 2023-03-14T14:13:31.519Z",
-        "LayerName": {
-          "Fn::Sub": [
-            "awsjsutils-${env}",
-            {
-              "env": {
-                "Ref": "env"
-              }
-            }
-          ]
-        }
-      },
-      "DeletionPolicy": "Delete",
-      "UpdateReplacePolicy": "Retain"
-    },
-    "LambdaLayerPermissionPublic1f7a07a1": {
-      "Type": "AWS::Lambda::LayerVersionPermission",
-      "Properties": {
-        "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:eu-central-1:314161511803:layer:awsjsutils-dev:7",
-        "Principal": "*"
-      }
-    },
-    "LambdaLayerVersion2ff6ed79": {
-      "Type": "AWS::Lambda::LayerVersion",
-      "Properties": {
-        "CompatibleRuntimes": [
-          "nodejs14.x"
-        ],
-        "Content": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": "amplify-builds/awsjsutils-LambdaLayerVersion2ff6ed79-build.zip"
-        },
-        "Description": "Updated layer version 2023-03-14T13:46:08.262Z",
-        "LayerName": {
-          "Fn::Sub": [
-            "awsjsutils-${env}",
-            {
-              "env": {
-                "Ref": "env"
-              }
-            }
-          ]
-        }
-      },
-      "DeletionPolicy": "Delete",
-      "UpdateReplacePolicy": "Retain"
-    },
-    "LambdaLayerPermissionPublic2ff6ed79": {
-      "Type": "AWS::Lambda::LayerVersionPermission",
-      "Properties": {
-        "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:eu-central-1:314161511803:layer:awsjsutils-dev:6",
-        "Principal": "*"
-      }
-    },
-    "LambdaLayerVersionb9cc3d98": {
-      "Type": "AWS::Lambda::LayerVersion",
-      "Properties": {
-        "CompatibleRuntimes": [
-          "nodejs14.x"
-        ],
-        "Content": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": "amplify-builds/awsjsutils-LambdaLayerVersionb9cc3d98-build.zip"
-        },
-        "Description": "Updated layer version 2023-03-14T13:19:28.122Z",
-        "LayerName": {
-          "Fn::Sub": [
-            "awsjsutils-${env}",
-            {
-              "env": {
-                "Ref": "env"
-              }
-            }
-          ]
-        }
-      },
-      "DeletionPolicy": "Delete",
-      "UpdateReplacePolicy": "Retain"
-    },
-    "LambdaLayerPermissionPublicb9cc3d98": {
-      "Type": "AWS::Lambda::LayerVersionPermission",
-      "Properties": {
-        "Action": "lambda:GetLayerVersion",
-        "LayerVersionArn": "arn:aws:lambda:eu-central-1:314161511803:layer:awsjsutils-dev:5",
         "Principal": "*"
       }
     }
@@ -240,7 +65,7 @@
   "Outputs": {
     "Arn": {
       "Value": {
-        "Ref": "LambdaLayerVersion8242538d"
+        "Ref": "LambdaLayerVersion6c15ae6d"
       }
     }
   }

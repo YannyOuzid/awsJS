@@ -19,23 +19,23 @@
       "function": {
         "getToken": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/getToken-6b5a34347549552b4f33-build.zip"
+          "s3Key": "amplify-builds/getToken-6f3156504e3438665856-build.zip"
         },
         "awsjsutils": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/awsjsutils-LambdaLayerVersion8242538d-build.zip"
+          "s3Key": "amplify-builds/awsjsutils-LambdaLayerVersion6c15ae6d-build.zip"
         },
         "sendData": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/sendData-6a685038445475455945-build.zip"
+          "s3Key": "amplify-builds/sendData-49742b7676594f43576b-build.zip"
         },
         "fileUpload": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/fileUpload-37766c46673276473561-build.zip"
+          "s3Key": "amplify-builds/fileUpload-7257356630352f632f58-build.zip"
         },
         "uploadDynamo": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/uploadDynamo-536575587832496b494a-build.zip"
+          "s3Key": "amplify-builds/uploadDynamo-466a712f6b38434d5864-build.zip"
         }
       },
       "api": {
