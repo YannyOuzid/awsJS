@@ -26,11 +26,7 @@
     },
     "storageuploadDbStreamArn": {
       "Type": "String",
-<<<<<<< HEAD
       "Default": "storageuploadDbStreamArn"
-=======
-      "Default": "storageuploadDbArn"
->>>>>>> 9c074ccfc3dc08df925e0969cff23ca35969592e
     }
   },
   "Conditions": {
@@ -242,7 +238,6 @@
         },
         "StartingPosition": "LATEST"
       }
-<<<<<<< HEAD
     },
     "AmplifyResourcesPolicy": {
       "DependsOn": [
@@ -292,8 +287,6 @@
           ]
         }
       }
-=======
->>>>>>> 9c074ccfc3dc08df925e0969cff23ca35969592e
     }
   },
   "Outputs": {
