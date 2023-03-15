@@ -6,6 +6,22 @@
   },
   "headers": {
     "Content-Type": "application/json",
-    "x-api-key": "09a49acd-c1b4-423f-896c-0867905ff27e"
+    "x-api-key": "09a49acd-c1b4-423f-896c-0867905ff27e",
+    "x-user-token": "a274f5b2-5401-4f32-bd1f-b550f5b911dd"
+  },
+  "body": {
+    "data": [
+      {
+        "id": "1",
+        "name": "John",
+        "age": "20"
+      },
+      {
+        "id": "2",
+        "name": "Jane",
+        "age": "21"
+      }
+    ],
+    "db": "DB"
   }
 }

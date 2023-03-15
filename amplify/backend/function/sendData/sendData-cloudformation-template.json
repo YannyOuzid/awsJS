@@ -15,6 +15,10 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "functionawsjsutilsArn": {
+      "Type": "String",
+      "Default": "functionawsjsutilsArn"
     }
   },
   "Conditions": {

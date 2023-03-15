@@ -1,10 +1,10 @@
 const {DynamoDBClient} = require("@aws-sdk/client-dynamodb");
 const {DynamoDBDocumentClient, ScanCommand, PutCommand} = require("@aws-sdk/lib-dynamodb");
-const {getSecret, createSecret} = require('/opt/nodejs/utils')
+const {checkSecret, createSecret} = require('/opt/nodejs/utils')
 const {v4: uuidv4} = require("uuid")
 
 exports.handler = async (event) => {
-  await getSecret('awsJsprofil', event.headers['x-api-key'])
+  await checkSecret('awsJsprofil', event.headers['x-api-key'])
   console.log("EVENT: \n" + JSON.stringify(event, null, 2));
   const client = new DynamoDBClient();
   const ddbDocClient = DynamoDBDocumentClient.from(client);

@@ -9,6 +9,14 @@
           ],
           "category": "function",
           "resourceName": "getToken"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "sendData"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -52,7 +60,15 @@
     },
     "sendData": {
       "build": true,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "awsjsutils"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },

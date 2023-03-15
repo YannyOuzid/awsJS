@@ -2,38 +2,31 @@
 	ENV
 	REGION
 Amplify Params - DO NOT EDIT */
-
-const AWS = require("aws-sdk");
-const s3 = new AWS.S3()
+const {checkSecret, getSecret} = require('/opt/nodejs/utils')
 
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
  */
 exports.handler = async (event) => {
-    const filename = 'the-file-name'
-    const fileContent = 'test'
+  let response;
 
-    const params = {
-        Bucket: 'datastorage',
-        Key: `${filename}.jpg`,
-        Body: fileContent
+  try {
+    await checkSecret('awsJsprofil', event.headers['x-api-key']);
+    const userId = await getSecret(event.headers['x-user-token'], 'pk');
+
+    const {db, data} = JSON.parse(event.body);
+
+    response = {
+      statusCode: 200,
+      body: JSON.stringify({userId, db, data})
     }
-
-    s3.upload(params, (err, data) => {
-    if (err) {
-        reject(err)
-    }
-    resolve(data.Location)
-    })
-
-    console.log(`EVENT: ${JSON.stringify(event)}`);
-    return {
-        statusCode: 200,
-    //  Uncomment below to enable CORS requests
-    //  headers: {
-    //      "Access-Control-Allow-Origin": "*",
-    //      "Access-Control-Allow-Headers": "*"
-    //  }, 
-        body: JSON.stringify('Hello from Lambda!'),
+  } catch (e) {
+    console.log(e);
+    response = {
+      statusCode: 500,
+      body: JSON.stringify({error: e.message})
     };
+  }
+
+  return response;
 };
