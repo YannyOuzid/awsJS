@@ -3,16 +3,42 @@
     "awsJSapi": {
       "dependsOn": [
         {
-          "category": "function",
-          "resourceName": "getToken",
           "attributes": [
             "Name",
             "Arn"
-          ]
+          ],
+          "category": "function",
+          "resourceName": "getToken"
         }
       ],
       "providerPlugin": "awscloudformation",
       "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "awsjsf81cbd6a": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
     }
   },
   "function": {
@@ -46,9 +72,9 @@
     },
     "sendData": {
       "build": true,
+      "dependsOn": [],
       "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": []
+      "service": "Lambda"
     }
   },
   "parameters": {
@@ -83,6 +109,22 @@
           "resourceName": "getToken"
         }
       ]
+    },
+    "AMPLIFY_function_sendData_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendData"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendData_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendData"
+        }
+      ]
     }
   },
   "storage": {
@@ -91,35 +133,9 @@
       "service": "DynamoDB"
     },
     "dataStorage": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": []
-    }
-  },
-  "auth": {
-    "awsjsf81cbd6a": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
       "dependsOn": [],
-      "customAuth": false,
-      "frontendAuthConfig": {
-        "socialProviders": [],
-        "usernameAttributes": [],
-        "signupAttributes": [
-          "EMAIL"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyMinLength": 8,
-          "passwordPolicyCharacters": []
-        },
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
-      }
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     }
   }
 }

@@ -258,7 +258,8 @@
             {
               "Effect": "Allow",
               "Action": [
-                "secretsmanager:GetSecretValue"
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:CreateSecret"
               ],
               "Resource": "arn:aws:secretsmanager:eu-central-1:314161511803:secret:awsJsprofil-qxHaLv"
             }
