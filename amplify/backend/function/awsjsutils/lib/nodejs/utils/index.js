@@ -6,7 +6,7 @@ const AWS = require("aws-sdk");
 
 const secretManagerClient = new AWS.SecretsManager()
 
-exports.getSecret = async (secretName, secretKey) =>  {
+exports.checkSecret = async (secretName, secretKey) =>  {
   const response = await secretManagerClient.getSecretValue({
     SecretId: secretName
   }).promise()
@@ -25,6 +25,26 @@ exports.getSecret = async (secretName, secretKey) =>  {
 
   if(secretName !== secretKeyValue) {
     throw new Error(`Wrong Authentication Key`)
+  }
+
+  return secretKeyValue
+}
+
+exports.getSecret = async (secretName, secretKey) =>  {
+  const response = await secretManagerClient.getSecretValue({
+    SecretId: secretName
+  }).promise()
+  const secretValues = response.SecretString
+
+  if (!secretValues) {
+    throw new Error('No keys found')
+  }
+
+  const secretJson = JSON.parse(secretValues)
+  const secretKeyValue = secretJson[secretKey]
+
+  if (!secretKeyValue) {
+    throw new Error(`No such key: ${secretKey}`)
   }
 
   return secretKeyValue

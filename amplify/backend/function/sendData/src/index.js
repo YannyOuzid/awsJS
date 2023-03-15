@@ -2,7 +2,7 @@
 	ENV
 	REGION
 Amplify Params - DO NOT EDIT */
-const {getSecret} = require('/opt/nodejs/utils')
+const {checkSecret, getSecret} = require('/opt/nodejs/utils')
 
 /**
  * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
@@ -11,7 +11,7 @@ exports.handler = async (event) => {
   let response;
 
   try {
-    await getSecret('awsJsprofil', event.headers['x-api-key']);
+    await checkSecret('awsJsprofil', event.headers['x-api-key']);
     const userId = await getSecret(event.headers['x-user-token'], 'pk');
 
     const {db, data} = JSON.parse(event.body);
