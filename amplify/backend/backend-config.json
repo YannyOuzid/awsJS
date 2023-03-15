@@ -22,6 +22,11 @@
       "providerPlugin": "awscloudformation",
       "service": "LambdaLayer"
     },
+    "fileUpload": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "getToken": {
       "build": true,
       "dependsOn": [
@@ -51,7 +56,7 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "fileUpload": {
+    "uploadDynamo": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -71,6 +76,22 @@
         {
           "category": "function",
           "resourceName": "awsjsutils"
+        }
+      ]
+    },
+    "AMPLIFY_function_fileUpload_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "fileUpload"
+        }
+      ]
+    },
+    "AMPLIFY_function_fileUpload_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "fileUpload"
         }
       ]
     },
