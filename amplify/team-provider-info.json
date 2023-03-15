@@ -18,15 +18,22 @@
       "function": {
         "getToken": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/getToken-5a3348394f4f56354953-build.zip"
+          "s3Key": "amplify-builds/getToken-425569585a44422f3149-build.zip"
         },
         "awsjsutils": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/awsjsutils-LambdaLayerVersion2cf5cb71-build.zip"
+          "s3Key": "amplify-builds/awsjsutils-LambdaLayerVersionac037e0f-build.zip"
+        },
+        "sendData": {
+          "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
+          "s3Key": "amplify-builds/sendData-70437237786959342b56-build.zip"
         }
       },
       "api": {
         "awsJSapi": {}
+      },
+      "auth": {
+        "awsjsf81cbd6a": {}
       }
     }
   },

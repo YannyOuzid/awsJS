@@ -3,12 +3,12 @@
     "awsJSapi": {
       "dependsOn": [
         {
+          "category": "function",
+          "resourceName": "getToken",
           "attributes": [
             "Name",
             "Arn"
-          ],
-          "category": "function",
-          "resourceName": "getToken"
+          ]
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -26,21 +26,26 @@
       "dependsOn": [
         {
           "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "awsjsutils"
+        },
+        {
+          "attributes": [
             "Name",
             "Arn",
             "StreamArn"
           ],
           "category": "storage",
           "resourceName": "awsJSDB"
-        },
-        {
-          "attributes": [
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "awsjsutils"
         }
       ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "sendData": {
+      "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
@@ -83,6 +88,37 @@
     "awsJSDB": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
+    },
+    "dataStorage": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
+  },
+  "auth": {
+    "awsjsf81cbd6a": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      }
     }
   }
 }
