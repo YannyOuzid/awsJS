@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "{\"createdOn\":\"Linux\",\"createdBy\":\"Amplify\",\"createdWith\":\"9.1.0\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
+  "Description": "{\"createdOn\":\"Mac\",\"createdBy\":\"Amplify\",\"createdWith\":\"10.8.1\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -16,9 +16,17 @@
     "s3Key": {
       "Type": "String"
     },
-    "functionawsjsutilsArn": {
+    "storageuploadDbName": {
       "Type": "String",
-      "Default": "functionawsjsutilsArn"
+      "Default": "storageuploadDbName"
+    },
+    "storageuploadDbArn": {
+      "Type": "String",
+      "Default": "storageuploadDbArn"
+    },
+    "storageuploadDbStreamArn": {
+      "Type": "String",
+      "Default": "storageuploadDbArn"
     }
   },
   "Conditions": {
@@ -51,12 +59,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "sendData",
+            "uploadDynamo",
             {
               "Fn::Join": [
                 "",
                 [
-                  "sendData",
+                  "uploadDynamo",
                   "-",
                   {
                     "Ref": "env"
@@ -93,12 +101,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "awsjsLambdaRole19004f11",
+            "awsjsLambdaRole87861958",
             {
               "Fn::Join": [
                 "",
                 [
-                  "awsjsLambdaRole19004f11",
+                  "awsjsLambdaRole87861958",
                   "-",
                   {
                     "Ref": "env"
@@ -167,6 +175,59 @@
             }
           ]
         }
+      }
+    },
+    "uploadDbTriggerPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "lambda-trigger-policy-uploadDb",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:DescribeStream",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:ListStreams"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageuploadDbStreamArn"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "uploadDbTrigger": {
+      "Type": "AWS::Lambda::EventSourceMapping",
+      "DependsOn": [
+        "uploadDbTriggerPolicy"
+      ],
+      "Properties": {
+        "BatchSize": 100,
+        "Enabled": true,
+        "EventSourceArn": {
+          "Ref": "storageuploadDbStreamArn"
+        },
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "LambdaFunction",
+            "Arn"
+          ]
+        },
+        "StartingPosition": "LATEST"
       }
     }
   },

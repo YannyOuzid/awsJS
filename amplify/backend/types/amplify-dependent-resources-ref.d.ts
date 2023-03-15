@@ -6,20 +6,16 @@ export type AmplifyDependentResourcesAttributes = {
       "RootUrl": "string"
     }
   },
-  "auth": {
-    "awsjsf81cbd6a": {
-      "AppClientID": "string",
-      "AppClientIDWeb": "string",
-      "IdentityPoolId": "string",
-      "IdentityPoolName": "string",
-      "UserPoolArn": "string",
-      "UserPoolId": "string",
-      "UserPoolName": "string"
-    }
-  },
   "function": {
     "awsjsutils": {
       "Arn": "string"
+    },
+    "fileUpload": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
     },
     "getToken": {
       "Arn": "string",
@@ -29,6 +25,13 @@ export type AmplifyDependentResourcesAttributes = {
       "Region": "string"
     },
     "sendData": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "uploadDynamo": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
@@ -47,9 +50,15 @@ export type AmplifyDependentResourcesAttributes = {
       "SortKeyType": "string",
       "StreamArn": "string"
     },
-    "dataStorage": {
-      "BucketName": "string",
-      "Region": "string"
+    "uploadDb": {
+      "Arn": "string",
+      "Name": "string",
+      "PartitionKeyName": "string",
+      "PartitionKeyType": "string",
+      "Region": "string",
+      "SortKeyName": "string",
+      "SortKeyType": "string",
+      "StreamArn": "string"
     }
   }
 }
