@@ -1,18 +1,17 @@
 const {DynamoDBClient} = require("@aws-sdk/client-dynamodb");
 const {DynamoDBDocumentClient, ScanCommand, PutCommand} = require("@aws-sdk/lib-dynamodb");
-const {getSecret} = require('/opt/nodejs/utils')
+const {getSecret, createSecret} = require('/opt/nodejs/utils')
 const {v4: uuidv4} = require("uuid")
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
   await getSecret('awsJsprofil', event.headers['x-api-key'])
   console.log("EVENT: \n" + JSON.stringify(event, null, 2));
   const client = new DynamoDBClient();
   const ddbDocClient = DynamoDBDocumentClient.from(client);
 
-  let response = {};
+  let response;
 
   try {
-
     // Check if the user already exists in DB
     const allItems = await ddbDocClient.send(new ScanCommand({
       TableName: process.env.STORAGE_AWSJSDB_NAME,
@@ -26,18 +25,29 @@ exports.handler = async (event, context) => {
         body: JSON.stringify({error: "User already exists"})
       };
     } else {
+      // Save user in DB
+      const item = {
+        id1: uuidv4(),
+        lastname: body.lastname,
+        firstname: body.firstname,
+        age: body.age
+      }
+
       await ddbDocClient.send(new PutCommand({
         TableName: process.env.STORAGE_AWSJSDB_NAME,
-        Item: {
-          id1: uuidv4(),
-          lastname: body.lastname,
-          firstname: body.firstname,
-          age: body.age
-        }
+        Item: item
       }))
+
+      // Create token in secrets manager
+      const token = uuidv4();
+      await createSecret('awsJsprofil', token, item.id1);
+
       response = {
         statusCode: 200,
-        body: `User created ${body.lastname} ${body.firstname}`
+        body: JSON.stringify({
+          user: item,
+          token
+        })
       }
     }
   } catch (e) {

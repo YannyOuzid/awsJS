@@ -3,7 +3,6 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "aws-sdk": "^2.1334.0"
-  },
-  "devDependencies": {}
+    "@aws-sdk/client-secrets-manager": "^3.290.0"
+  }
 }

@@ -26,19 +26,19 @@
       "dependsOn": [
         {
           "attributes": [
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "awsjsutils"
-        },
-        {
-          "attributes": [
             "Name",
             "Arn",
             "StreamArn"
           ],
           "category": "storage",
           "resourceName": "awsJSDB"
+        },
+        {
+          "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "awsjsutils"
         }
       ],
       "providerPlugin": "awscloudformation",

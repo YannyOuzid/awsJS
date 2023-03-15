@@ -18,7 +18,7 @@
       "function": {
         "getToken": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/getToken-5230644c30534f4a3731-build.zip"
+          "s3Key": "amplify-builds/getToken-46554a7a7451486e7670-build.zip"
         },
         "awsjsutils": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",

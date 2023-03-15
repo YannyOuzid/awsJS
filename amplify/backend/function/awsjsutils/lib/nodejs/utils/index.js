@@ -2,11 +2,11 @@
 // If you need more information about configurations or implementing the sample code, visit the AWS docs:
 // https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/getting-started.html
 
-const AWS = require("aws-sdk");
+const {SecretsManagerClient} = require("@aws-sdk/client-secrets-manager");
 
-const secretManagerClient = new AWS.SecretsManager()
+const secretManagerClient = new SecretsManagerClient()
 
-exports.getSecret = async (secretName, secretKey) =>  {
+exports.getSecret = async (secretName, secretKey) => {
   const response = await secretManagerClient.getSecretValue({
     SecretId: secretName
   }).promise()
@@ -23,10 +23,15 @@ exports.getSecret = async (secretName, secretKey) =>  {
     throw new Error(`No such key: ${secretKey}`)
   }
 
-  if(secretName !== secretKeyValue) {
+  if (secretName !== secretKeyValue) {
     throw new Error(`Wrong Authentication Key`)
-4
   }
 
   return secretKeyValue
 }
+
+exports.createSecret = (secretName, secretKey, secretValue) =>
+  secretManagerClient.createSecret({
+    Name: secretName,
+    SecretString: JSON.stringify({[secretKey]: secretValue})
+  }).promise()
