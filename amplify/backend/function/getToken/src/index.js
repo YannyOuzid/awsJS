@@ -25,7 +25,6 @@ exports.handler = async (event) => {
         body: JSON.stringify({error: "User already exists"})
       };
     } else {
-      // Save user in DB
       const item = {
         id1: uuidv4(),
         lastname: body.lastname,
@@ -33,14 +32,15 @@ exports.handler = async (event) => {
         age: body.age
       }
 
+      // Create token in secrets manager
+      const token = uuidv4();
+      await createSecret(token, 'pk', item.id1);
+
+      // Save user in DB
       await ddbDocClient.send(new PutCommand({
         TableName: process.env.STORAGE_AWSJSDB_NAME,
         Item: item
       }))
-
-      // Create token in secrets manager
-      const token = uuidv4();
-      await createSecret('awsJsprofil', token, item.id1);
 
       response = {
         statusCode: 200,
