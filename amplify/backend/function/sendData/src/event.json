@@ -1,5 +1,11 @@
 {
-  "key1": "value1",
-  "key2": "value2",
-  "key3": "value3"
+  "httpMethod": "POST",
+  "path": "/sendData",
+  "queryStringParameters": {
+    "limit": "10"
+  },
+  "headers": {
+    "Content-Type": "application/json",
+    "x-api-key": "09a49acd-c1b4-423f-896c-0867905ff27e"
+  }
 }
