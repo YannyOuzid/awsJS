@@ -72,7 +72,15 @@
     },
     "sendData": {
       "build": true,
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "awsjsutils"
+        }
+      ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
