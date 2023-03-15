@@ -83,6 +83,9 @@
     "awsJSDB": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
+    },
+    "dataStorage": {
+      "dependsOn": []
     }
   }
 }

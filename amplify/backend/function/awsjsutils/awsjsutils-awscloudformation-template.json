@@ -20,7 +20,7 @@
     }
   },
   "Resources": {
-    "LambdaLayerVersionac037e0f": {
+    "LambdaLayerVersiond8cecfa1": {
       "Type": "AWS::Lambda::LayerVersion",
       "Properties": {
         "CompatibleRuntimes": {
@@ -51,13 +51,48 @@
       "DeletionPolicy": "Delete",
       "UpdateReplacePolicy": "Retain"
     },
-    "LambdaLayerPermissionPublicac037e0f": {
+    "LambdaLayerPermissionPublicd8cecfa1": {
       "Type": "AWS::Lambda::LayerVersionPermission",
       "Properties": {
         "Action": "lambda:GetLayerVersion",
         "LayerVersionArn": {
-          "Ref": "LambdaLayerVersionac037e0f"
+          "Ref": "LambdaLayerVersiond8cecfa1"
         },
+        "Principal": "*"
+      }
+    },
+    "LambdaLayerVersionac037e0f": {
+      "Type": "AWS::Lambda::LayerVersion",
+      "Properties": {
+        "CompatibleRuntimes": [
+          "nodejs14.x"
+        ],
+        "Content": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": "amplify-builds/awsjsutils-LambdaLayerVersionac037e0f-build.zip"
+        },
+        "Description": "Updated layer version 2023-03-14T15:10:18.855Z",
+        "LayerName": {
+          "Fn::Sub": [
+            "awsjsutils-${env}",
+            {
+              "env": {
+                "Ref": "env"
+              }
+            }
+          ]
+        }
+      },
+      "DeletionPolicy": "Delete",
+      "UpdateReplacePolicy": "Retain"
+    },
+    "LambdaLayerPermissionPublicac037e0f": {
+      "Type": "AWS::Lambda::LayerVersionPermission",
+      "Properties": {
+        "Action": "lambda:GetLayerVersion",
+        "LayerVersionArn": "arn:aws:lambda:eu-central-1:314161511803:layer:awsjsutils-dev:8",
         "Principal": "*"
       }
     },
@@ -170,7 +205,7 @@
   "Outputs": {
     "Arn": {
       "Value": {
-        "Ref": "LambdaLayerVersionac037e0f"
+        "Ref": "LambdaLayerVersiond8cecfa1"
       }
     }
   }
