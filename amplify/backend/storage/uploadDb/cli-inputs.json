@@ -9,15 +9,7 @@
     "fieldName": "user_uuid",
     "fieldType": "string"
   },
-  "gsi": [
-    {
-      "name": "user_uuid__",
-      "partitionKey": {
-        "fieldName": "user_uuid",
-        "fieldType": "string"
-      }
-    }
-  ],
+  "gsi": [],
   "triggerFunctions": [
     "uploadDynamo"
   ]
