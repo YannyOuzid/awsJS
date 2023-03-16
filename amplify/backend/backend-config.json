@@ -98,6 +98,13 @@
       "build": true,
       "dependsOn": [
         {
+          "category": "function",
+          "resourceName": "awsjsutils",
+          "attributes": [
+            "Arn"
+          ]
+        },
+        {
           "attributes": [
             "Name"
           ],

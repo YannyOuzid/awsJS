@@ -97,7 +97,11 @@
           ]
         },
         "Runtime": "nodejs14.x",
-        "Layers": [],
+        "Layers": [
+          {
+            "Ref": "functionawsjsutilsArn"
+          }
+        ],
         "Timeout": 25
       }
     },
