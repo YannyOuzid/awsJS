@@ -4,7 +4,7 @@
 	FUNCTION_UPLOADDYNAMO_NAME
 	REGION
 Amplify Params - DO NOT EDIT */
-const {checkSecret, getSecret} = require('/opt/nodejs/utils')
+//const {checkSecret, getSecret} = require('/opt/nodejs/utils')
 const AWS = require('aws-sdk');
 
 const lambdaNames = { DB: process.env.FUNCTION_UPLOADDYNAMO_NAME, S3: process.env.FUNCTION_FILEUPLOAD_NAME };
@@ -15,8 +15,8 @@ exports.handler = async (event) => {
   console.log('event', event);
   let response;
   try {
-    await checkSecret('awsJsprofil', event.headers['x-api-key']);
-    const userId = await getSecret(event.headers['x-user-token'], 'pk');
+    //await checkSecret('awsJsprofil', event.headers['x-api-key']);
+    //const userId = await getSecret(event.headers['x-user-token'], 'pk');
 
     const {db, data} = JSON.parse(event.body);
 
@@ -29,7 +29,7 @@ exports.handler = async (event) => {
 
     const lambdaParams = {
       FunctionName: lambdaNames[db],
-      Payload: JSON.stringify({body: {user_uuid: userId, file_content: data}})
+      Payload: JSON.stringify({body: {user_uuid: '123', file_content: data}})
     }
     
     const body = await lambda.invoke(lambdaParams).promise();
