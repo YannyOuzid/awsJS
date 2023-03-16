@@ -309,6 +309,30 @@
           ]
         }
       }
+    },
+    "SQSPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Properties": {
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyName": "SQSPolicy",
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": "sqs:SendMessage",
+              "Resource": "arn:aws:sqs:eu-central-1:314161511803:awsJsSqs"
+            }
+          ]
+        }
+      }
     }
   },
   "Outputs": {

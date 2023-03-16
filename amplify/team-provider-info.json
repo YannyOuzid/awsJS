@@ -44,7 +44,7 @@
         },
         "sendDataWebhook": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/sendDataWebhook-3856575a6874374a3332-build.zip"
+          "s3Key": "amplify-builds/sendDataWebhook-612f304954545564574f-build.zip"
         }
       },
       "api": {

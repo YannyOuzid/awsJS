@@ -11,6 +11,7 @@ const AWS = require('aws-sdk');
 
 const lambda = new AWS.Lambda();
 const dynamo = new AWS.DynamoDB.DocumentClient();
+const sqs = new AWS.SQS();
 
 exports.handler = async (event) => {
   console.log('event', event);
@@ -27,15 +28,6 @@ exports.handler = async (event) => {
     if (data === undefined) {
       throw new Error('No data');
     }
-
-    // Save data in DDB
-    const lambdaParams = {
-      FunctionName: process.env.FUNCTION_UPLOADDYNAMO_NAME,
-      Payload: JSON.stringify({body: {user_uuid: userId, file_content: data}})
-    }
-
-    const dataResponse = await lambda.invoke(lambdaParams).promise();
-    console.log('dataResponse', dataResponse);
 
     // Save webhook url in DDB
     const found = await dynamo.get({
@@ -62,9 +54,24 @@ exports.handler = async (event) => {
       }
     });
 
-    response = {
-      statusCode: 200
+    // Save data in DDB
+    const lambdaParams = {
+      FunctionName: process.env.FUNCTION_UPLOADDYNAMO_NAME,
+      Payload: JSON.stringify({body: {user_uuid: userId, file_content: data}})
     }
+    const dataResponse = await lambda.invoke(lambdaParams).promise();
+    console.log('dataResponse', dataResponse);
+
+    // Send user id to SQS
+    const sqsParams = {
+      MessageBody: userId,
+      QueueUrl: 'https://sqs.eu-central-1.amazonaws.com/314161511803/awsJsSqs',
+    };
+    const sqsResponse = await sqs.sendMessage(sqsParams).promise();
+    console.log('sqsResponse', sqsResponse);
+
+    // Prepare response
+    response = { statusCode: 200 }
   } catch (e) {
     console.log(e);
     response = {
