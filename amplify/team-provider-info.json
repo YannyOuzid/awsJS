@@ -28,7 +28,7 @@
         },
         "sendData": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/sendData-744c6f6b412f396c637a-build.zip"
+          "s3Key": "amplify-builds/sendData-48653873433242503358-build.zip"
         },
         "fileUpload": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",

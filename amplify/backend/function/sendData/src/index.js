@@ -31,7 +31,13 @@ exports.handler = async (event) => {
       FunctionName: lambdaNames[db],
       Payload: JSON.stringify({body: {user_uuid: userId, file_content: data}})
     }
-    response = await lambda.invoke(lambdaParams).promise();
+    
+    const body = await lambda.invoke(lambdaParams).promise();
+
+    response = {
+      statusCode: 200,
+      body: JSON.parse(body.Payload).body
+    }
   } catch (e) {
     console.log(e);
     response = {
