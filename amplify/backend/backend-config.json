@@ -98,11 +98,11 @@
       "build": true,
       "dependsOn": [
         {
-          "category": "function",
-          "resourceName": "awsjsutils",
           "attributes": [
             "Arn"
-          ]
+          ],
+          "category": "function",
+          "resourceName": "awsjsutils"
         },
         {
           "attributes": [
