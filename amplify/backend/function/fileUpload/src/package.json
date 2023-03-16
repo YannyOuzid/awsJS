@@ -6,7 +6,9 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/aws-lambda": "^8.10.92",
-    "aws-sdk": "^2.1334.0",
+    "aws-sdk": "^2.1334.0"
+  },
+  "dependencies": {
     "uuid": "^9.0.0"
   }
 }

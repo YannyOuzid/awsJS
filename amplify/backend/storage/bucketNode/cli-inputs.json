@@ -1,0 +1,14 @@
+{
+  "resourceName": "bucketNode",
+  "policyUUID": "35673113",
+  "bucketName": "bucketnode",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

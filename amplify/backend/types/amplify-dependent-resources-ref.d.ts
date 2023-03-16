@@ -1,5 +1,33 @@
 export type AmplifyDependentResourcesAttributes = {
+  "api": {
+    "awsJSapi": {
+      "ApiId": "string",
+      "ApiName": "string",
+      "RootUrl": "string"
+    }
+  },
+  "auth": {
+    "awsjs8c307a30": {
+      "AppClientID": "string",
+      "AppClientIDWeb": "string",
+      "IdentityPoolId": "string",
+      "IdentityPoolName": "string",
+      "UserPoolArn": "string",
+      "UserPoolId": "string",
+      "UserPoolName": "string"
+    }
+  },
   "function": {
+    "awsjsutils": {
+      "Arn": "string"
+    },
+    "fileUpload": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
     "getToken": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
@@ -32,6 +60,10 @@ export type AmplifyDependentResourcesAttributes = {
       "SortKeyName": "string",
       "SortKeyType": "string",
       "StreamArn": "string"
+    },
+    "bucketNode": {
+      "BucketName": "string",
+      "Region": "string"
     },
     "uploadDb": {
       "Arn": "string",

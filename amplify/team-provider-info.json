@@ -14,7 +14,8 @@
     "categories": {
       "storage": {
         "awsJSDB": {},
-        "uploadDb": {}
+        "uploadDb": {},
+        "bucketNode": {}
       },
       "function": {
         "getToken": {
@@ -23,15 +24,15 @@
         },
         "awsjsutils": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/awsjsutils-LambdaLayerVersion6c15ae6d-build.zip"
+          "s3Key": "amplify-builds/awsjsutils-LambdaLayerVersionf88d6c5f-build.zip"
         },
         "sendData": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/sendData-49742b7676594f43576b-build.zip"
+          "s3Key": "amplify-builds/sendData-31326878665131333839-build.zip"
         },
         "fileUpload": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/fileUpload-7257356630352f632f58-build.zip"
+          "s3Key": "amplify-builds/fileUpload-62324a6a4b65396b3579-build.zip"
         },
         "uploadDynamo": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
@@ -40,6 +41,9 @@
       },
       "api": {
         "awsJSapi": {}
+      },
+      "auth": {
+        "awsjs8c307a30": {}
       }
     }
   },

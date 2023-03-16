@@ -1,4 +1,8 @@
-const AWS = require("aws-sdk");
+/* Amplify Params - DO NOT EDIT
+	ENV
+	REGION
+	STORAGE_BUCKETNODE_BUCKETNAME
+Amplify Params - DO NOT EDIT */const AWS = require("aws-sdk");
 const s3 = new AWS.S3()
 const {v4: uuidv4} = require("uuid")
 
@@ -10,7 +14,7 @@ exports.handler = async (event) => {
     let fileName = uuidv4();
 
     const item = {
-        Bucket: 'awscoursjs',
+        Bucket: process.env.STORAGE_BUCKETNODE_BUCKETNAME,
         Key: fileName + '.json',
         Body: JSON.stringify(event, null, 2),
     }
