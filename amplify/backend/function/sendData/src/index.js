@@ -12,12 +12,14 @@ const lambdaNames = { DB: process.env.FUNCTION_UPLOADDYNAMO_NAME, S3: process.en
 const lambda = new AWS.Lambda();
 
 exports.handler = async (event) => {
+  console.log('event', event);
   let response;
   try {
     await checkSecret('awsJsprofil', event.headers['x-api-key']);
     const userId = await getSecret(event.headers['x-user-token'], 'pk');
 
-    const {db, data} = event.body;
+    const db = event.body.db;
+    const data = event.body.data;
 
     if (!db) {
       throw new Error('No db specified');
