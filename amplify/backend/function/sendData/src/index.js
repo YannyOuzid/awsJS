@@ -18,13 +18,12 @@ exports.handler = async (event) => {
     await checkSecret('awsJsprofil', event.headers['x-api-key']);
     const userId = await getSecret(event.headers['x-user-token'], 'pk');
 
-    const db = event.body.db;
-    const data = event.body.data;
+    const {db, data} = JSON.parse(event.body);
 
-    if (!db) {
+    if (db === undefined) {
       throw new Error('No db specified');
     }
-    if (!data) {
+    if (data === undefined) {
       throw new Error('No data');
     }
 
