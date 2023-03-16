@@ -37,6 +37,14 @@
         "uploadDynamo": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
           "s3Key": "amplify-builds/uploadDynamo-695a532f31784b6d506a-build.zip"
+        },
+        "deleteme": {
+          "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
+          "s3Key": "amplify-builds/deleteme-2b69374d677545617333-build.zip"
+        },
+        "sendDataWebhook": {
+          "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
+          "s3Key": "amplify-builds/sendDataWebhook-6d6a5630624f6e556859-build.zip"
         }
       },
       "api": {

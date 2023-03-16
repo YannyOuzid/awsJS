@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "function": {
+      "uploadDynamo": [
+        "create",
+        "read"
+      ]
+    },
+    "storage": {
+      "awsJSDB": [
+        "create",
+        "read",
+        "update"
+      ]
+    }
+  },
+  "lambdaLayers": [
+    {
+      "type": "ProjectLayer",
+      "resourceName": "awsjsutils",
+      "env": "dev",
+      "version": "Always choose latest version",
+      "isLatestVersionSelected": true
+    }
+  ]
+}

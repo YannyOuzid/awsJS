@@ -17,6 +17,14 @@
           ],
           "category": "function",
           "resourceName": "sendData"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "sendDataWebhook"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -122,6 +130,36 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "sendDataWebhook": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "uploadDynamo"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "awsJSDB"
+        },
+        {
+          "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "awsjsutils"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "uploadDynamo": {
       "build": true,
       "dependsOn": [
@@ -156,6 +194,22 @@
         }
       ]
     },
+    "AMPLIFY_function_deleteme_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "deleteme"
+        }
+      ]
+    },
+    "AMPLIFY_function_deleteme_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "deleteme"
+        }
+      ]
+    },
     "AMPLIFY_function_fileUpload_deploymentBucketName": {
       "usedBy": [
         {
@@ -185,6 +239,22 @@
         {
           "category": "function",
           "resourceName": "getToken"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendDataWebhook_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendDataWebhook"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendDataWebhook_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendDataWebhook"
         }
       ]
     },
