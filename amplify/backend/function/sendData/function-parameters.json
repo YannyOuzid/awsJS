@@ -3,9 +3,9 @@
     {
       "type": "ProjectLayer",
       "resourceName": "awsjsutils",
+      "env": "dev",
       "version": "Always choose latest version",
-      "isLatestVersionSelected": true,
-      "env": "dev"
+      "isLatestVersionSelected": true
     }
   ],
   "permissions": {

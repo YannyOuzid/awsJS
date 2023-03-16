@@ -63,6 +63,13 @@
       "dependsOn": [
         {
           "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "awsjsutils"
+        },
+        {
+          "attributes": [
             "Name"
           ],
           "category": "function",
