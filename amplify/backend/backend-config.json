@@ -63,10 +63,17 @@
       "dependsOn": [
         {
           "attributes": [
-            "Arn"
+            "Name"
           ],
           "category": "function",
-          "resourceName": "awsjsutils"
+          "resourceName": "fileUpload"
+        },
+        {
+          "attributes": [
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "uploadDynamo"
         }
       ],
       "providerPlugin": "awscloudformation",

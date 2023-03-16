@@ -1,8 +1,15 @@
 /* Amplify Params - DO NOT EDIT
 	ENV
+	FUNCTION_FILEUPLOAD_NAME
+	FUNCTION_UPLOADDYNAMO_NAME
 	REGION
 Amplify Params - DO NOT EDIT */
 const {checkSecret, getSecret} = require('/opt/nodejs/utils')
+const AWS = require('aws-sdk');
+
+const lambdaNames = { DB: process.env.FUNCTION_UPLOADDYNAMO_NAME, S3: process.env.FUNCTION_FILEUPLOAD_NAME };
+
+const lambda = new AWS.Lambda();
 
 exports.handler = async (event) => {
   let response;
@@ -10,17 +17,25 @@ exports.handler = async (event) => {
     await checkSecret('awsJsprofil', event.headers['x-api-key']);
     const userId = await getSecret(event.headers['x-user-token'], 'pk');
 
-    const {db, data} = JSON.parse(event.body);
+    const {db, data} = event.body;
 
-    response = {
-      statusCode: 200,
-      body: JSON.stringify({userId, db, data})
+    if (!db) {
+      throw new Error('No db specified');
     }
+    if (!data) {
+      throw new Error('No data');
+    }
+
+    const lambdaParams = {
+      FunctionName: lambdaNames[db],
+      Payload: JSON.stringify({body: {user_uuid: userId, file_content: data}})
+    }
+    response = await lambda.invoke(lambdaParams).promise();
   } catch (e) {
     console.log(e);
     response = {
       statusCode: 500,
-      body: JSON.stringify({error: e.message})
+      body: JSON.stringify({error: e.message}, null, 2)
     };
   }
 

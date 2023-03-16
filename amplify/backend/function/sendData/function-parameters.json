@@ -3,10 +3,21 @@
     {
       "type": "ProjectLayer",
       "resourceName": "awsjsutils",
-      "env": "dev",
       "version": "Always choose latest version",
-      "isLatestVersionSelected": true
+      "isLatestVersionSelected": true,
+      "env": "dev"
     }
   ],
-  "permissions": {}
+  "permissions": {
+    "function": {
+      "fileUpload": [
+        "create",
+        "read"
+      ],
+      "uploadDynamo": [
+        "create",
+        "read"
+      ]
+    }
+  }
 }
