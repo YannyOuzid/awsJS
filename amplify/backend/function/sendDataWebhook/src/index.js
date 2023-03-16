@@ -2,23 +2,76 @@
 	ENV
 	FUNCTION_UPLOADDYNAMO_NAME
 	REGION
-	STORAGE_AWSJSDB_ARN
-	STORAGE_AWSJSDB_NAME
-	STORAGE_AWSJSDB_STREAMARN
+	STORAGE_USERDB_ARN
+	STORAGE_USERDB_NAME
+	STORAGE_USERDB_STREAMARN
 Amplify Params - DO NOT EDIT */
+const {checkSecret, getSecret} = require('/opt/nodejs/utils')
+const AWS = require('aws-sdk');
 
-/**
- * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
- */
+const lambda = new AWS.Lambda();
+const dynamo = new AWS.DynamoDB.DocumentClient();
+
 exports.handler = async (event) => {
-    console.log(`EVENT: ${JSON.stringify(event)}`);
-    return {
-        statusCode: 200,
-    //  Uncomment below to enable CORS requests
-    //  headers: {
-    //      "Access-Control-Allow-Origin": "*",
-    //      "Access-Control-Allow-Headers": "*"
-    //  },
-        body: JSON.stringify('Hello from Lambda!'),
+  console.log('event', event);
+  let response;
+  try {
+    await checkSecret('awsJsprofil', event.headers['x-api-key']);
+    const userId = await getSecret(event.headers['x-user-token'], 'pk');
+
+    const {webhook, data} = JSON.parse(event.body);
+
+    if (webhook === undefined) {
+      throw new Error('No db specified');
+    }
+    if (data === undefined) {
+      throw new Error('No data');
+    }
+
+    // Save data in DDB
+    const lambdaParams = {
+      FunctionName: process.env.FUNCTION_UPLOADDYNAMO_NAME,
+      Payload: JSON.stringify({body: {user_uuid: userId, file_content: data}})
+    }
+
+    const dataResponse = await lambda.invoke(lambdaParams).promise();
+    console.log('dataResponse', dataResponse);
+
+    // Save webhook url in DDB
+    const found = await dynamo.get({
+      TableName: process.env.STORAGE_USERDB_NAME,
+      Key: {
+        id: userId
+      }
+    }).promise();
+    console.log('found', found);
+
+    const item = found.Item;
+    if (item === undefined) {
+      throw new Error('User not found');
+    }
+
+    dynamo.update({
+      TableName: process.env.STORAGE_USERDB_NAME,
+      Key: {
+        id: userId
+      },
+      UpdateExpression: 'set webhook = :webhook',
+      ExpressionAttributeValues: {
+        ':webhook': webhook
+      }
+    });
+
+    response = {
+      statusCode: 200
+    }
+  } catch (e) {
+    console.log(e);
+    response = {
+      statusCode: 500,
+      body: JSON.stringify({error: e.message}, null, 2)
     };
+  }
+
+  return response;
 };

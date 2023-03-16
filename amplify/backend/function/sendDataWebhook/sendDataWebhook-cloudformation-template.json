@@ -20,21 +20,21 @@
       "Type": "String",
       "Default": "functionuploadDynamoName"
     },
-    "storageawsJSDBName": {
-      "Type": "String",
-      "Default": "storageawsJSDBName"
-    },
-    "storageawsJSDBArn": {
-      "Type": "String",
-      "Default": "storageawsJSDBArn"
-    },
-    "storageawsJSDBStreamArn": {
-      "Type": "String",
-      "Default": "storageawsJSDBStreamArn"
-    },
     "functionawsjsutilsArn": {
       "Type": "String",
       "Default": "functionawsjsutilsArn"
+    },
+    "storageuserDBName": {
+      "Type": "String",
+      "Default": "storageuserDBName"
+    },
+    "storageuserDBArn": {
+      "Type": "String",
+      "Default": "storageuserDBArn"
+    },
+    "storageuserDBStreamArn": {
+      "Type": "String",
+      "Default": "storageuserDBStreamArn"
     }
   },
   "Conditions": {
@@ -93,14 +93,14 @@
             "FUNCTION_UPLOADDYNAMO_NAME": {
               "Ref": "functionuploadDynamoName"
             },
-            "STORAGE_AWSJSDB_NAME": {
-              "Ref": "storageawsJSDBName"
+            "STORAGE_USERDB_NAME": {
+              "Ref": "storageuserDBName"
             },
-            "STORAGE_AWSJSDB_ARN": {
-              "Ref": "storageawsJSDBArn"
+            "STORAGE_USERDB_ARN": {
+              "Ref": "storageuserDBArn"
             },
-            "STORAGE_AWSJSDB_STREAMARN": {
-              "Ref": "storageawsJSDBStreamArn"
+            "STORAGE_USERDB_STREAMARN": {
+              "Ref": "storageuserDBStreamArn"
             }
           }
         },
@@ -291,14 +291,14 @@
               ],
               "Resource": [
                 {
-                  "Ref": "storageawsJSDBArn"
+                  "Ref": "storageuserDBArn"
                 },
                 {
                   "Fn::Join": [
                     "/",
                     [
                       {
-                        "Ref": "storageawsJSDBArn"
+                        "Ref": "storageuserDBArn"
                       },
                       "index/*"
                     ]

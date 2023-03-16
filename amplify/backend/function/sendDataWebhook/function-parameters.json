@@ -7,7 +7,7 @@
       ]
     },
     "storage": {
-      "awsJSDB": [
+      "userDB": [
         "create",
         "read",
         "update"

@@ -16,21 +16,21 @@
     "s3Key": {
       "Type": "String"
     },
-    "storageawsJSDBName": {
-      "Type": "String",
-      "Default": "storageawsJSDBName"
-    },
-    "storageawsJSDBArn": {
-      "Type": "String",
-      "Default": "storageawsJSDBArn"
-    },
-    "storageawsJSDBStreamArn": {
-      "Type": "String",
-      "Default": "storageawsJSDBStreamArn"
-    },
     "functionawsjsutilsArn": {
       "Type": "String",
       "Default": "functionawsjsutilsArn"
+    },
+    "storageuserDBName": {
+      "Type": "String",
+      "Default": "storageuserDBName"
+    },
+    "storageuserDBArn": {
+      "Type": "String",
+      "Default": "storageuserDBArn"
+    },
+    "storageuserDBStreamArn": {
+      "Type": "String",
+      "Default": "storageuserDBStreamArn"
     }
   },
   "Conditions": {
@@ -86,14 +86,14 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "STORAGE_AWSJSDB_NAME": {
-              "Ref": "storageawsJSDBName"
+            "STORAGE_USERDB_NAME": {
+              "Ref": "storageuserDBName"
             },
-            "STORAGE_AWSJSDB_ARN": {
-              "Ref": "storageawsJSDBArn"
+            "STORAGE_USERDB_ARN": {
+              "Ref": "storageuserDBArn"
             },
-            "STORAGE_AWSJSDB_STREAMARN": {
-              "Ref": "storageawsJSDBStreamArn"
+            "STORAGE_USERDB_STREAMARN": {
+              "Ref": "storageuserDBStreamArn"
             }
           }
         },
@@ -194,55 +194,6 @@
         }
       }
     },
-    "AmplifyResourcesPolicy": {
-      "DependsOn": [
-        "LambdaExecutionRole"
-      ],
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyName": "amplify-lambda-execution-policy",
-        "Roles": [
-          {
-            "Ref": "LambdaExecutionRole"
-          }
-        ],
-        "PolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Action": [
-                "dynamodb:Put*",
-                "dynamodb:Create*",
-                "dynamodb:BatchWriteItem",
-                "dynamodb:Get*",
-                "dynamodb:BatchGetItem",
-                "dynamodb:List*",
-                "dynamodb:Describe*",
-                "dynamodb:Scan",
-                "dynamodb:Query"
-              ],
-              "Resource": [
-                {
-                  "Ref": "storageawsJSDBArn"
-                },
-                {
-                  "Fn::Join": [
-                    "/",
-                    [
-                      {
-                        "Ref": "storageawsJSDBArn"
-                      },
-                      "index/*"
-                    ]
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      }
-    },
     "secretsmanagerexecutionpolicy": {
       "Type": "AWS::IAM::Policy",
       "Properties": {
@@ -275,6 +226,55 @@
       "DependsOn": [
         "LambdaExecutionRole"
       ]
+    },
+    "AmplifyResourcesPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "amplify-lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storageuserDBArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storageuserDBArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   },
   "Outputs": {

@@ -1,7 +1,7 @@
 {
   "permissions": {
     "storage": {
-      "awsJSDB": [
+      "userDB": [
         "create",
         "read"
       ]

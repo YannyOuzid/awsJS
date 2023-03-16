@@ -84,19 +84,19 @@
       "dependsOn": [
         {
           "attributes": [
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "awsjsutils"
-        },
-        {
-          "attributes": [
             "Name",
             "Arn",
             "StreamArn"
           ],
           "category": "storage",
-          "resourceName": "awsJSDB"
+          "resourceName": "userDB"
+        },
+        {
+          "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "awsjsutils"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -135,6 +135,13 @@
       "dependsOn": [
         {
           "attributes": [
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "awsjsutils"
+        },
+        {
+          "attributes": [
             "Name"
           ],
           "category": "function",
@@ -147,14 +154,7 @@
             "StreamArn"
           ],
           "category": "storage",
-          "resourceName": "awsJSDB"
-        },
-        {
-          "attributes": [
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "awsjsutils"
+          "resourceName": "userDB"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -292,16 +292,16 @@
     }
   },
   "storage": {
-    "awsJSDB": {
-      "providerPlugin": "awscloudformation",
-      "service": "DynamoDB"
-    },
     "bucketNode": {
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"
     },
     "uploadDb": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "userDB": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"
     }

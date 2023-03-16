@@ -1,3 +1,10 @@
+/* Amplify Params - DO NOT EDIT
+	ENV
+	REGION
+	STORAGE_USERDB_ARN
+	STORAGE_USERDB_NAME
+	STORAGE_USERDB_STREAMARN
+Amplify Params - DO NOT EDIT */
 const {DynamoDBClient} = require("@aws-sdk/client-dynamodb");
 const {DynamoDBDocumentClient, ScanCommand, PutCommand} = require("@aws-sdk/lib-dynamodb");
 const {checkSecret, createSecret} = require('/opt/nodejs/utils')
@@ -14,7 +21,7 @@ exports.handler = async (event) => {
   try {
     // Check if the user already exists in DB
     const allItems = await ddbDocClient.send(new ScanCommand({
-      TableName: process.env.STORAGE_AWSJSDB_NAME,
+      TableName: process.env.STORAGE_USERDB_NAME,
     }))
     const body = JSON.parse(event.body);
     const user = allItems.Items.find(item => item.lastname === body.lastname);
@@ -26,7 +33,7 @@ exports.handler = async (event) => {
       };
     } else {
       const item = {
-        id1: uuidv4(),
+        id: uuidv4(),
         lastname: body.lastname,
         firstname: body.firstname,
         age: body.age
@@ -34,11 +41,11 @@ exports.handler = async (event) => {
 
       // Create token in secrets manager
       const token = uuidv4();
-      await createSecret(token, 'pk', item.id1);
+      await createSecret(token, 'pk', item.id);
 
       // Save user in DB
       await ddbDocClient.send(new PutCommand({
-        TableName: process.env.STORAGE_AWSJSDB_NAME,
+        TableName: process.env.STORAGE_USERDB_NAME,
         Item: item
       }))
 
