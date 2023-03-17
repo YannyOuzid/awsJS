@@ -125,6 +125,29 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
+    "postDataWebhook": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "bucketNode"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "userDB"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "sendData": {
       "build": true,
       "dependsOn": [
@@ -278,6 +301,22 @@
         {
           "category": "function",
           "resourceName": "getToken"
+        }
+      ]
+    },
+    "AMPLIFY_function_postDataWebhook_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "postDataWebhook"
+        }
+      ]
+    },
+    "AMPLIFY_function_postDataWebhook_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "postDataWebhook"
         }
       ]
     },

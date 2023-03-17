@@ -72,7 +72,7 @@ exports.handler = async (event) => {
     console.log('sqsResponse', sqsResponse);
 
     // Prepare response
-    response = { statusCode: 200 }
+    response = { statusCode: 200, body: webhook }
   } catch (e) {
     console.log(e);
     response = {
