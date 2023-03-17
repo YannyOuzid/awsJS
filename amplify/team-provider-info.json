@@ -20,7 +20,7 @@
       "function": {
         "getToken": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/getToken-654745424b4a4646444e-build.zip"
+          "s3Key": "amplify-builds/getToken-76574b416d3438427635-build.zip"
         },
         "awsjsutils": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
@@ -44,7 +44,7 @@
         },
         "sendDataWebhook": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/sendDataWebhook-612f304954545564574f-build.zip"
+          "s3Key": "amplify-builds/sendDataWebhook-3357662b2b6b69307a72-build.zip"
         }
       },
       "api": {

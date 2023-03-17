@@ -43,7 +43,7 @@ exports.handler = async (event) => {
       throw new Error('User not found');
     }
 
-    dynamo.update({
+    const updateResult = await dynamo.update({
       TableName: process.env.STORAGE_USERDB_NAME,
       Key: {
         id: userId
@@ -52,7 +52,8 @@ exports.handler = async (event) => {
       ExpressionAttributeValues: {
         ':webhook': webhook
       }
-    });
+    }).promise();
+    console.log('updateResult', updateResult);
 
     // Save data in DDB
     const lambdaParams = {

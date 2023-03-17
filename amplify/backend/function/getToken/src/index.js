@@ -36,7 +36,8 @@ exports.handler = async (event) => {
         id: uuidv4(),
         lastname: body.lastname,
         firstname: body.firstname,
-        age: body.age
+        age: body.age,
+        webhook: ''
       }
 
       // Create token in secrets manager
