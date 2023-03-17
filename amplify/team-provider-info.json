@@ -32,7 +32,7 @@
         },
         "fileUpload": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
-          "s3Key": "amplify-builds/fileUpload-2f647a634254322b495a-build.zip"
+          "s3Key": "amplify-builds/fileUpload-61474a64615554532b64-build.zip"
         },
         "uploadDynamo": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
@@ -45,6 +45,10 @@
         "sendDataWebhook": {
           "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
           "s3Key": "amplify-builds/sendDataWebhook-3357662b2b6b69307a72-build.zip"
+        },
+        "aggregateUserData": {
+          "deploymentBucketName": "amplify-awsjs-dev-91912-deployment",
+          "s3Key": "amplify-builds/aggregateUserData-575a3534756368726f75-build.zip"
         }
       },
       "api": {

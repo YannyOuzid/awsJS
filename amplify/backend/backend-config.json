@@ -60,6 +60,29 @@
     }
   },
   "function": {
+    "aggregateUserData": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name"
+          ],
+          "category": "function",
+          "resourceName": "fileUpload"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "uploadDb"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "awsjsutils": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -178,6 +201,22 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_aggregateUserData_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "aggregateUserData"
+        }
+      ]
+    },
+    "AMPLIFY_function_aggregateUserData_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "aggregateUserData"
+        }
+      ]
+    },
     "AMPLIFY_function_awsjsutils_deploymentBucketName": {
       "usedBy": [
         {

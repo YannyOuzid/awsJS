@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "function": {
+      "fileUpload": [
+        "create",
+        "read"
+      ]
+    },
+    "storage": {
+      "uploadDb": [
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

@@ -19,7 +19,7 @@ exports.handler = async (event) => {
     const item = {
         Bucket: process.env.STORAGE_BUCKETNODE_BUCKETNAME,
         Key: fileName + '.json',
-        Body: JSON.stringify(event, null, 2),
+        Body: JSON.stringify(event.body, null, 2),
     }
 
     const upload = await s3.upload(item).promise()
